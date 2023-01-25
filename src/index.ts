@@ -17,7 +17,7 @@ AppDataSource.initialize()
   })
   .catch((e:any)=>{
     console.log(e);
-    
+    throw new Error('No se pudo conectar con la base de datos');
   })
 
 // CORS

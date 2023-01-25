@@ -6,9 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      db:
-        condition: "service_started"
-    restart: always
+      - db
+    restart: on-failure
     ports:
       - "${PORT}:${PORT}"
     container_name: hotel-app
@@ -24,5 +23,6 @@ services:
     container_name: db
     volumes: 
       - psql:/var/lib/postgresql/data
+
 volumes:
   psql:

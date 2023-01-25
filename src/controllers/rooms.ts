@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {AppDataSource} from "../data-source";
-import {Room} from "../entity/Room";
+import {Room} from "../entity/Room.entity";
 import {handleErrors} from "./reservations";
 
 const defaultRooms = [

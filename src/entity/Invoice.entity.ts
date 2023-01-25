@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm"
-import {Reservation} from "./Reservation";
+import {Reservation} from "./Reservation.entity";
 
 @Entity()
 export class Invoice {

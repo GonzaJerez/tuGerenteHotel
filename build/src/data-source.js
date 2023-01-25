@@ -8,17 +8,16 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-console.log(process.env.DB_PASSWORD);
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
-    host: "localhost",
+    host: (process.env.NODE_ENV == 'development') ? 'localhost' : 'db',
     username: "postgres",
     port: 5432,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    // synchronize: true,
+    synchronize: true,
     // logging: false,
-    entities: [],
+    entities: [__dirname + '/../**/*.entity.js'],
     migrations: [],
     subscribers: [],
 });

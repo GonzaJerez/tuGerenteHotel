@@ -1,16 +1,16 @@
 import {Request, Response} from "express";
 
 import {AppDataSource} from "../data-source";
-import {Invoice} from "../entity/Invoice";
-import {Reservation} from "../entity/Reservation";
-import {Room} from "../entity/Room";
+import {Invoice} from "../entity/Invoice.entity";
+import {Reservation} from "../entity/Reservation.entity";
+import {Room} from "../entity/Room.entity";
 import {ReservationReq} from "../types/CreateReservation";
 import {PayRequest} from "../types/PayReservation";
 import {StatusReservation} from "../types/StatusReservation";
 
 
-const roomRepository = AppDataSource.getRepository(Room);
 const reservationRepository = AppDataSource.getRepository(Reservation);
+const roomRepository = AppDataSource.getRepository(Room);
 
 export const createReservation = async(req:ReservationReq,res:Response)=>{
   const {checkin,checkout,clientEmail,clientName,methodPayment,roomId, amountPaid, invoiceDescription,totalAmount} = req.body;

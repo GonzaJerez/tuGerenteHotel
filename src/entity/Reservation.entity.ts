@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn } from "typeorm"
 import {StatusReservation} from "../types/StatusReservation";
-import {Invoice} from "./Invoice";
-import {Room} from "./Room";
+import {Invoice} from "./Invoice.entity";
+import {Room} from "./Room.entity";
 
 @Entity()
 export class Reservation {
