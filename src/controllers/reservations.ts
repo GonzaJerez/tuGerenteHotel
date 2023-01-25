@@ -157,7 +157,7 @@ export const deleteReservation = async(req:Request,res:Response)=>{
   }
 }
 
-const handleErrors = (error:any, res:Response)=>{
+export const handleErrors = (error:any, res:Response)=>{
   console.log(error);
   return res.status(500).json({
     msg: 'Ha ocurrido un error, comuniquese con el administrador.'

@@ -27,6 +27,7 @@ app.use( express.json() );
 
 // Routes
 app.use('/api/reservations', require('./routes/reservations'))
+app.use('/api/rooms', require('./routes/rooms'))
 
 app.listen(port, ()=>{
   console.log(`Server running on port ${port}`);
