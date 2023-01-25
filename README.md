@@ -2,7 +2,21 @@
 
 ## Sistema de reservas de habitación (prueba técnica)
 
+### Preparacion
+
+1. Clonar el repositorio
+
+        gh repo clone GonzaJerez/tuGerenteHotel
+
+2. Instalar dependencias
+
+        npm install
+
+3. Establecer las variables de entorno en el archivo ".env.example" (modificarlas si es necesario) y cambiar el nombre del archivo a ".env".
+
 ### Levantar entorno de desarrollo
+
+*Haber completado el paso de "Preparación " primero*
 
 1. Levantar la base de datos de desarrollo
 
@@ -18,6 +32,8 @@
 
 
 ### Levantar en entorno de producción 
+
+*Haber completado el paso de "Preparación " primero*
 
 Crea contenedor de la base de datos y de la aplicación
 

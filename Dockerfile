@@ -25,4 +25,4 @@ COPY --from=deps /app/build ./build
 
 COPY --from=deps /app/.env ./
 
-CMD [ "node","build/src/index.js" ]
+CMD [ "node","build/index.js" ]
