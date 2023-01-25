@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-
+// Config for Database
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: (process.env.NODE_ENV == 'development') ? 'localhost' : 'db',

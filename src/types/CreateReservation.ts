@@ -1,5 +1,6 @@
 import {Request} from "express";
 
+// Typed for the body request when create reservation
 export interface CreateReservation {
   roomId: string;
   checkin: Date;

@@ -3,6 +3,7 @@ import {AppDataSource} from "../data-source";
 import {Room} from "../entity/Room.entity";
 import {handleErrors} from "./reservations";
 
+// Default rooms existing in the hotel
 const defaultRooms = [
   {
     floor: 1,
@@ -42,20 +43,25 @@ const defaultRooms = [
   },
 ]
 
+// Create required repositories 
 const roomRepository = AppDataSource.getRepository(Room);
 
-export const loadDefaultRooms = async(req:Request, res:Response)=>{
+export const loadDefaultRooms = async(_req:Request, res:Response)=>{
 
+  // Search for existing rooms
   const existRooms = await roomRepository.find({})
 
+  // if any room already exists it does not allow to add default rooms
   if(existRooms.length > 0){
     return res.status(403).json({
       error: 'Las habitaciones ya fueron cargadas.'
     })
   }
 
+  // Array to save all Room instances
   const roomsCreated:Room[] = [];
 
+  // Create a Room instance for every room in "defaultRooms" and add to "roomsCreated"
   for(let i = 0; i<defaultRooms.length; i++){
     const room = new Room();
     room.floor = defaultRooms[i].floor;
@@ -67,7 +73,10 @@ export const loadDefaultRooms = async(req:Request, res:Response)=>{
   }
 
   try {
+    // Save all rooms on DB
     await roomRepository.save(roomsCreated);
+    
+    // Return a custom message to the client
     return res.status(201).json({
       ok: true,
       msg: 'Habitaciones cargadas exitosamente.'
@@ -77,14 +86,16 @@ export const loadDefaultRooms = async(req:Request, res:Response)=>{
   }
 }
 
-export const getRooms = async(req:Request, res:Response)=>{
+export const getRooms = async(_req:Request, res:Response)=>{
   try {
+    // Find all rooms in DB
     const rooms = await roomRepository.find({})
   
+    // Return the rooms found to the client
     return res.status(200).json({
       rooms
     })
   } catch (error) {
-    handleErrors(error,res);
+      handleErrors(error,res);
   }
 }

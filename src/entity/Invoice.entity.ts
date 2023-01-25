@@ -20,7 +20,6 @@ export class Invoice {
     @OneToOne(
         ()=>Reservation,
         reservation => reservation.invoice,
-        // {cascade: true, eager: true}
       )
     reservation: Reservation;
 

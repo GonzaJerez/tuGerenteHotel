@@ -11,7 +11,7 @@ router.get('/',getAllReservations);
 
 // Show reservation by id
 router.get('/:id',[
-  check('id', 'UUID de reserva inválido').isUUID(),
+  check('id', 'El UUID de la reserva es inválido').isUUID(),
   validateFields
 ], getReservationById);
 
