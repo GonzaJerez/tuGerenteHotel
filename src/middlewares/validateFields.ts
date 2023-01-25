@@ -1,0 +1,13 @@
+import {NextFunction, Request, Response} from "express";
+
+const { validationResult } = require( 'express-validator' );
+
+export const validateFields = (req:Request, res:Response, next:NextFunction) => {
+    // Atrapa los errores de validacion
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json(errors)
+    }
+
+    next();
+}
